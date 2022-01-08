@@ -1,3 +1,7 @@
+#
+#Math for the tune is from Diquee's of r/ForzaOpenTunes spreadsheet. Had an ongoing copy I made myself, and decided
+#to evolve it into this to teach myself Python.
+
 import variables
 import constants
 import functions
@@ -5,16 +9,16 @@ import math
 
 
 #get input for car variables
+WeightLb = input('Car Weight in Lbs: ')
 while True:
-    WeightLb = input('Car Weight in Lbs: ')
     if functions.checkfloat(WeightLb):
         WeightLb = float(WeightLb)
         break
     else:
-        print ('Please input a valid Car Weight in Lbs: ')
+        WeightLb = input('Please input a valid Car Weight in Lbs: ')
 
+FrontDist = input('Front Weight Percentage: ')
 while True:
-    FrontDist = input('Front Weight Percentage: ')
     if functions.checkfloat(FrontDist):
         FrontDist = float(FrontDist)
         if FrontDist >= 1 and FrontDist <= 100:
@@ -22,24 +26,23 @@ while True:
             RearDist =  round(1 - FrontDist,2)
             break
     else:
-        print ('Please input a valid weight percentage, 1-100: ')
+        FrontDist = input('Please input a valid weight percentage, 1-100: ')
 
-
+CarClass = input('Car Class - D, C, B, A, S1, S2, or X: ')
 while True:
-    CarClass = input('Car Class - D, C, B, A, S1, S2, or X: ')
     if CarClass.upper() in variables.ArbFactor.keys():
         CarClass = CarClass.upper()
         break
     else:
-        print ('Please input a valid Car Class -  D, C, B, A, S1, S2, or X: ')
+        CarClass = input ('Please input a valid Car Class -  D, C, B, A, S1, S2, or X: ')
 
+SpringType = input('Spring Type - Rally, Race, or Drift: ')
 while True:
-    SpringType = input('Spring Type - Rally, Race, or Drift: ')
     if SpringType.upper() in variables.SpringFactor.keys():
         SpringType = SpringType.upper()
         break
     else:
-        print ('Please input a valid spring type - Rally, Race, or Drift: ')
+        SpringType = input ('Please input a valid spring type - Rally, Race, or Drift: ')
 
 while True:
     DriveType = input('Drive Type - RWD, FWD, AWD: ')
@@ -68,7 +71,6 @@ variables.SpringRearDelta = SpringMaxRear - SpringMinRear
 
 
 #Set Tune Spring Rates
-#(WeightKgf)*WeightDistro*General
 if DriveType == 'FWD':
     variables.Tune['SpringFrontKgf'] = functions.TuneSpring(WeightKgf,FrontDist,SpringType) * (1 - variables.DriveOffset)
     variables.Tune['SpringRearKgf'] = functions.TuneSpring(WeightKgf,RearDist,SpringType)

@@ -16,8 +16,11 @@ Min_Rear = {"RALLY":0.03,"RACE":0.040758632,"DRIFT":0.040758632}
 
 
 ##Unit Conversion Ratios
-kg_to_nmm = 0.980665
+kg_to_nm = 0.980665
 nmm_to_lbin = 0.5710147163
 kg_to_lb =2.205
 nmm_to_kgf = 0.1019716213
 kg_to_kgf = 0.1
+
+
+

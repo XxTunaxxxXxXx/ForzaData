@@ -7,7 +7,7 @@ DriveOffset = .04
 BrakeOffset = .01
 
 
-#Blank tune dictionary, mainly for reference, SpringFront/Rear will be in Kfg by default
+#Blank tune dictionary
 Tune = {
     "SpringFrontKgf":0,
     "SpringFrontNmm":0,
