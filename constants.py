@@ -8,7 +8,7 @@ Bump_Delta_Front = 19
 Bump_Delta_Rear = 19
 
 
-##Spring rate to weight multiplier calculated by Diquee from r/ForzaOpennTunes. Offroad not exact.
+##Weight to Spring rate multiplier calculated by Diquee from r/ForzaOpenTunes. Offroad not exact.
 Max_Front = {"RALLY":0.102,"RACE":0.203971238,"DRIFT":0.203971238}
 Min_Front = {"RALLY":0.0204,"RACE":0.040758632,"DRIFT":0.040758632}
 Max_Rear = {"RALLY":0.102,"RACE":0.203971238,"DRIFT":0.203971238}
