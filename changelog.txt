@@ -1,0 +1,8 @@
+1/9/2022
+Added a toggle for kg or lb as weight input.
+
+---------------
+1/7/2022 
+moved entire tuning code into it's own function to make it easier to reuse for other purposes.
+fixed the math so it was actully accurate matching my spreadsheet for rally selections. 
+Started setting up a menu to add options for settings.

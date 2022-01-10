@@ -1,18 +1,42 @@
+#If you feel a need to customize how the car is tuned in any way, treat these as % multipliers for each part. 
+ArbFactor = {
+    "D":0.50,
+    "C":0.60,
+    "B":0.70,
+    "A":0.80,
+    "S1":0.90,
+    "S2":1.0,
+    "X":1.0
+    }
+SpringFactor = {
+    "RALLY":1.0,
+    "RACE":2.0,
+    "DRIFT":2.0
+    }
+ReboundFactor = { 
+    "RALLY":0.60,
+    "RACE":1.0,
+    "DRIFT":1.0
+    }
+BumpFactor = {
+    "RALLY":0.35,
+    "RACE":0.60,
+    "DRIFT":0.60
+    }
+    
+DriveOffset = .04  # Softens drive suspension
+ArbRallyFactor = .65 # Softens ARB for rally/offroad builds
 
-ArbFactor = {"D":0.50,"C":0.60,"B":0.70,"A":0.80,"S1":0.90,"S2":1.0,"X":1.0}
-SpringFactor = {"RALLY":1,"RACE":2,"DRIFT":2}
-ReboundFactor = {"RALLY":.60,"RACE":1,"DRIFT":1}
-BumpFactor = {"RALLY":.35,"RACE":.60,"DRIFT":.60}
-DriveOffset = .04
-BrakeOffset = .01
-
+WeightUnit = 'Lbs' # For weight toggle input
 
 #Blank tune dictionary
 Tune = {
     "SpringFrontKgf":0,
     "SpringFrontNmm":0,
     "SpringFrontLb":0,
-    "SpringRear":0,
+    "SpringRearKgf":0,
+    "SpringRearNmm":0,
+    "SpringRearLb":0,
     "ArbFront":0,
     "ArbRear":0,
     "ReboundFront":0,
@@ -20,8 +44,3 @@ Tune = {
     "BumpFront":0,
     "BumpRear":0
     }
-
-
-#Setting variables outside of main to reference easily in functions
-SpringRearDelta = 0
-SpringFrontDelta = 0
