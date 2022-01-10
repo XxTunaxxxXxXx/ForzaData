@@ -28,8 +28,8 @@ while True:
             MenuSelection = input ('Please input a valid selection, 1-4: ')
 
     if MenuSelection == '1': # Set base tune
-        functions.screen_clear()
         functions.GetTuneInputs()
+        functions.screen_clear()
         print ('\nFront Spring: '+ str(round(variables.Tune['SpringFrontLb'],1)) + ' lb/in')
         print ('Rear Spring: '+ str(round(variables.Tune['SpringRearLb'],1)) + ' lb/in')
         print ('Front ARB: '+ str(round(variables.Tune['ArbFront'],1)))
