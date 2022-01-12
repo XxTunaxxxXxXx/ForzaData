@@ -11,7 +11,7 @@ def lb_to_kg(unit):
         unit /= 2.205
         return unit
     else:
-        print("lb_to_kg input was not valid float. An exception has occured\n")
+        print("lb_to_kg input was not valid float. Functions line 14\n")
         sys.exit("Input to function was:" + unit)
 #kg to kg/f
 def kg_to_kgf(unit):
@@ -20,7 +20,7 @@ def kg_to_kgf(unit):
         unit *= 0.1
         return unit
     else:
-        print("kg_to_kgf input was not valid float. An exception has occured\n")
+        print("kg_to_kgf input was not valid float. Functions line 23\n")
         sys.exit("Input to function was:" + unit)
 #kgf to n/mm
 def kgf_to_nmm(unit):
@@ -29,7 +29,7 @@ def kgf_to_nmm(unit):
         unit /= constants.nmm_to_kgf
         return unit
     else:
-        print("kgf_to_nmm input was not valid float. An exception has occured\n")
+        print("kgf_to_nmm input was not valid float. Functions line 32\n")
         sys.exit("Input to function was:" + unit)
 #n/mm to lb/in
 def nmm_to_lbin(unit):
@@ -38,7 +38,7 @@ def nmm_to_lbin(unit):
         unit *= constants.nmm_to_lbin
         return unit
     else:
-        print("nmm_to_lbin input was not valid float. An exception has occured\n")
+        print("nmm_to_lbin input was not valid float. Functions line 41\n")
         sys.exit("Input to function was:" + unit)
     
 #Check if input is float
@@ -78,6 +78,7 @@ def TuneCar(WeightKg, SpringType, FrontDist, CarClass, DriveType):
         variables.SpringFrontDelta = SpringMaxFront - SpringMinFront
         variables.SpringRearDelta = SpringMaxRear - SpringMinRear
         #Set rear weight distribution,
+        FrontDist *= .01
         RearDist =  round(1 - FrontDist,2)
         
         #Set Tune Spring Rates
@@ -96,9 +97,16 @@ def TuneCar(WeightKg, SpringType, FrontDist, CarClass, DriveType):
         variables.Tune['SpringRearNmm'] = kgf_to_nmm(variables.Tune['SpringRearKgf'])
         variables.Tune['SpringFrontLb'] = nmm_to_lbin(variables.Tune['SpringFrontNmm'])
         variables.Tune['SpringRearLb'] = nmm_to_lbin(variables.Tune['SpringRearNmm'])
+        print (str(variables.Tune['SpringFrontKgf'])+'\n')
+        print (str(variables.Tune['SpringRearKgf'])+'\n')
+        print (str(variables.Tune['SpringFrontNmm'])+'\n')
+        print (str(variables.Tune['SpringRearNmm'])+'\n')
+        print (str(variables.Tune['SpringFrontLb'])+'\n')
+        print (str(variables.Tune['SpringRearLb'])+'\n')
         
-         #Set Tune Anti-roll bars, Rebound, and Bump
-        if SpringType.upper() == "RALLY":
+        
+        #Set Tune Anti-roll bars, Rebound, and Bump
+        if SpringType.upper() == "RALLY" or SpringType.upper() == "STOCK BUGGY":
             variables.Tune['ArbFront'] = TuneFront(constants.Arb_Delta_Front,variables.ArbFactor[CarClass])*variables.ArbRallyFactor
             variables.Tune['ArbRear'] =  TuneRear(constants.Arb_Delta_Rear,variables.ArbFactor[CarClass])*variables.ArbRallyFactor
             variables.Tune['ReboundFront']= TuneFront(constants.Rebound_Delta_Front, variables.ReboundFactor[SpringType])
@@ -112,65 +120,12 @@ def TuneCar(WeightKg, SpringType, FrontDist, CarClass, DriveType):
             variables.Tune['ReboundRear'] = TuneRear(constants.Rebound_Delta_Rear, variables.ReboundFactor[SpringType])
             variables.Tune['BumpFront'] = variables.Tune['ReboundFront'] * variables.BumpFactor[SpringType]
             variables.Tune['BumpRear'] = variables.Tune['ReboundRear'] * variables.BumpFactor[SpringType]   
-
         return True
-    except:
+    except Exception as e:
+        print(e)
         sys.exit('Error occured on Tune function')
-        
-#Quick script to get needed input and error check before putting through to TuneCar. 
-def GetTuneInputs():
-    #screen_clear()
-    Weight = input('Car Weight in '+ variables.WeightUnit +': ')
-    while True:
-        if checkfloat(Weight):
-            Weight = float(Weight)
-            break
-        else:
-            Weight = input('Please input a valid Car Weight in '+ variables.WeightUnit + ': ')
-    #screen_clear()
-    FrontDist = input('Front Weight Percentage: ')
-    while True:
-        if checkfloat(FrontDist):
-            FrontDist = float(FrontDist)
-            if FrontDist >= 1 and FrontDist <= 100:
-                FrontDist = float(FrontDist)*.01
-                break
-        FrontDist = input('Please input a valid weight percentage, 1-100: ')
-    #screen_clear()
-    CarClass = input('Car Class - D, C, B, A, S1, S2, or X: ')
-    while True:
-        if CarClass.upper() in variables.ArbFactor.keys():
-            CarClass = CarClass.upper()
-            break
-        else:
-            CarClass = input ('Please input a valid Car Class -  D, C, B, A, S1, S2, or X: ')
 
-    SpringType = input('Spring Type - Rally, Race, or Drift: ')
-    while True:
-        if SpringType.upper() in variables.SpringFactor.keys():
-            SpringType = SpringType.upper()
-            break
-        else:
-            SpringType = input ('Please input a valid spring type - Rally, Race, or Drift: ')
-    #screen_clear()
-    while True:
-        DriveType = input('Drive Type - RWD, FWD, AWD: ')
-        types = ['FWD','AWD','RWD']
-        if DriveType.upper() in types:
-            DriveType = DriveType.upper()
-            break
-        else:
-            print ('Please input a valid drive type - RWD, FWD, AWD: ')
-    #Tune car
-    if variables.WeightUnit == 'Lbs':
-        TuneCar(lb_to_kg(Weight), SpringType, FrontDist, CarClass, DriveType)
-    else:
-        TuneCar(Weight, SpringType, FrontDist, CarClass, DriveType)
-
-
-
-
-# cleaar screen 
+# clear screen 
 def screen_clear():
     # for windows
     if name == 'nt':
@@ -178,4 +133,3 @@ def screen_clear():
     # for mac and linux
     else:
         _ = system('clear')
-

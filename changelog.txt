@@ -1,3 +1,8 @@
+1/12/2022
+ventured into the world of GUI. Not much more past what was already done in a terminal, but looks pretty now.
+stock buggy option isn't actually coded, so it just crashes. 
+
+-----------------
 1/9/2022
 Added a toggle for kg or lb as weight input.
 

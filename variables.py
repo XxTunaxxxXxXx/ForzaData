@@ -10,16 +10,19 @@ ArbFactor = {
     }
 SpringFactor = {
     "RALLY":1.0,
+    "STOCK BUGGY":.60,
     "RACE":2.0,
     "DRIFT":2.0
     }
 ReboundFactor = { 
+    "STOCK BUGGY":.60,
     "RALLY":0.60,
     "RACE":1.0,
     "DRIFT":1.0
     }
 BumpFactor = {
     "RALLY":0.35,
+    "STOCK BUGGY":.35,
     "RACE":0.60,
     "DRIFT":0.60
     }
@@ -27,7 +30,7 @@ BumpFactor = {
 DriveOffset = .04  # Softens drive suspension
 ArbRallyFactor = .65 # Softens ARB for rally/offroad builds
 
-WeightUnit = 'Lbs' # For weight toggle input
+WeightUnit = 'Lbs' # For weight toggle input on ForzaTerminal.py
 
 #Blank tune dictionary
 Tune = {
