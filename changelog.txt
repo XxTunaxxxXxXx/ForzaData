@@ -1,3 +1,8 @@
+1/12/2022
+ventured into the world of GUI. Not much more past what was already done in a terminal, but looks pretty now.
+stock buggy option isn't actually coded, so it just crashes. 
+
+-----------------
 1/9/2022
 Added a toggle for kg or lb as weight input.
 
@@ -6,3 +11,7 @@ Added a toggle for kg or lb as weight input.
 moved entire tuning code into it's own function to make it easier to reuse for other purposes.
 fixed the math so it was actully accurate matching my spreadsheet for rally selections. 
 Started setting up a menu to add options for settings.
+
+1/05/2022
+Added this date at the bottom just for records sake.
+First started looking into Python on the 5th, started from scratch here.
